@@ -8,6 +8,11 @@
 1. A network adapter which supports jumbo frames.
 2. A camera, duh..
 
+# Installation
+```
+conda env create -f environment.yml
+```
+
 # Calibration
 
 ## Set Image Format to RBG8
