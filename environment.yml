@@ -1,0 +1,18 @@
+name: td2d
+channels:
+    - conda-forge
+
+dependencies:
+   - python=3.10
+   - pip
+   - git
+   - compas=1.*
+   - bleak
+   - pip
+   - black
+   - flake8
+   - opencv
+   - scikit-learn
+   - pip:
+     - -e .
+
