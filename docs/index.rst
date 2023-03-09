@@ -24,6 +24,7 @@ Table of Contents
    examples
    api
    license
+   citing
 
 
 Indices and tables

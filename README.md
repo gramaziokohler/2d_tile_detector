@@ -1,4 +1,7 @@
-# Perception
+# Perception: OpenCV-based 2D tile detector
+
+[![DOI](https://zenodo.org/badge/611631118.svg)](https://zenodo.org/badge/latestdoi/611631118)
+
 
 ## Required software
 1. FLIR's `SpinView`. From [here](https://www.flir.com/support-center/iis/machine-vision/downloads/spinnaker-sdk-and-firmware-download/)
@@ -124,4 +127,3 @@ Shake the tree by following all or some of these steps as you see fit:
    1. Double click the failed camera and let `SpinView` re-configure it
 
 Now try again in `mvDeviceConfigure`, all connected devices should be listed.
-
