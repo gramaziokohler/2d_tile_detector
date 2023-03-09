@@ -13,7 +13,8 @@ class OpenCVCalibrationData:
     rotation_vecs: the rotation part of the extrinsic matrix
     translate_vecs: the translation part of the extrinsic matrix
     new_camera_matrix: a new optimized camera matrix, with compensation for lens distortion
-    region_of_interest: subset of the image which should be now distortion free. x_start and y_start in the original image along with new width and height
+    region_of_interest: subset of the image which should be now distortion free. x_start and y_start
+    in the original image along with new width and height
 
     inv_camera_matrix: invert of the camera matrix used during the translation of pixel to world coordinates
     scaling factor: a big mystery, but used as well for the translation of pixel to world coordinates
@@ -76,8 +77,10 @@ class OpenCVCalibrationData:
         extrinsic_mat = numpy.column_stack((rot_matrix, self.translate_vecs))
         projection_mat = self.new_camera_matrix.dot(extrinsic_mat)
         # 7.5, 4.1, 55.5 explained:
-        # 55.5 cm is the distance from the camera's lens to the physical point on the plane where the cameras cx and cy point is projected.
-        # 7.5, 4.1 are the x and y distance in cm from a rather arbitrarily chosen origin on the plane to the above mentioned point.
+        # 55.5 cm is the distance from the camera's lens to the physical point on the plane
+        # where the cameras cx and cy point is projected.
+        # 7.5, 4.1 are the x and y distance in cm from a rather arbitrarily chosen origin
+        # on the plane to the above mentioned point.
         xyz1 = numpy.array([[7.5, 4.1, 55.5, 1.0]], dtype=numpy.float32).reshape((4, 1))
         result_xyz = projection_mat.dot(xyz1)
         self.scaling_factor = result_xyz[2, 0]
@@ -117,7 +120,9 @@ class OpenCVCalibrator:
         )
 
         # crop the image
-        return result[self.roi_y : self.roi_y + self.image_height, self.roi_x : self.roi_x + self.image_width]
+        return result[
+            self.roi_y : self.roi_y + self.image_height, self.roi_x : self.roi_x + self.image_width  # noqa: E203
+        ]
 
     def pixel_to_irl_coords(self, pixel_coords: Tuple[int, int]) -> Tuple[float, float, float]:
         """The coordinates received are in camera space, but x,y origin is not necessarily at the center of the camera.

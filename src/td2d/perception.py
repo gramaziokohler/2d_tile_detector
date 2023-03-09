@@ -1,14 +1,16 @@
+import os
 from dataclasses import dataclass
 from threading import Thread
 from typing import Tuple
 
 import cv2
-from compas.geometry import Point, Vector
+from compas.geometry import Point
+from compas.geometry import Vector
 
-from .perception import GenTlDevice
 from .calibration import OpenCVCalibrationData
 from .calibration import OpenCVCalibrator
 from .gui import UiManager
+from .perception import GenTlDevice
 
 
 @dataclass
@@ -114,8 +116,8 @@ class TileLocator(Thread):
         Only one contour -> one polygon with exactly 4 corners is expected to be found in the image.
         Anymore or less, this function shall return None.
 
-        Use min and max area to filter the found contours by area. If no max area is specified, the whole image frame will be
-        detected as one.
+        Use min and max area to filter the found contours by area. If no max area is specified,
+        the whole image frame will be detected as one.
 
         min_arc_length_factor: the minimum curve length which shall be considered as a contour.
             This is calculated as a fraction of the p
@@ -167,7 +169,7 @@ class TileLocator(Thread):
 def main():
     gentl_endpoint = r"C:\Program Files\MATRIX VISION\mvIMPACT Acquire\bin\x64\mvGenTLProducer.cti"
     camera_model = "Blackfly S BFS-PGE-19S4C"
-    calibration_file = r"C:\Users\ckasirer\repos\upcycled_robotic_tiling\data\calibration\calibration20220908-163200.cal"  # you might need to give an absolute path here
+    calibration_file = os.path.join(os.path.dirname(__file__), "data", "calibration", "calibration20220908-163200.cal")
 
     locator = TileLocator(gentl_endpoint, camera_model, calibration_file)
     locator.start()  # this doesn't block!
