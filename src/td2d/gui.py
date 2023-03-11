@@ -82,6 +82,8 @@ class UiManager:
             self.user_input.max_area = value
 
         cv2.createTrackbar("threshold", self.window_name, self.DEFAULT_THRESHOLD, self.THRESHOLD_SLIDER_MAX, on_change)
+        cv2.createTrackbar("min_area", self.window_name, self.DEF_MIN_TILE_AREA, self.TILE_AREA_SLIDER_MAX, min_on_change)
+        cv2.createTrackbar("max_area", self.window_name, self.DEF_MAX_TILE_AREA, self.TILE_AREA_SLIDER_MAX, max_on_change)
 
     def draw_selected_tiles(self, on_img: numpy.ndarray, tiles: Tuple[numpy.ndarray]) -> None:
         """
