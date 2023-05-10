@@ -12,7 +12,7 @@ from argparse import ArgumentParser
 import cv2 as cv
 import numpy as np
 
-from compas_urt.perception import GenTlDevice
+from td2d.genicam_device import GenTlDevice
 
 
 CAMERA = "Blackfly S BFS-PGE-31S4C"

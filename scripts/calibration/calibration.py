@@ -8,7 +8,7 @@ from typing import Any
 
 import cv2
 import numpy as np
-from compas_urt.perception import GenTlDevice, SingleImageDevice
+from td2d.genicam_device import GenTlDevice, SingleImageDevice
 
 from aruco_markers import save_coefficients
 
